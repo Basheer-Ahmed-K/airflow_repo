@@ -63,3 +63,6 @@ load_task = PythonOperator(
 end_task = EmptyOperator(task_id='end', dag=dag)
 
 start_task >> [extract_task, transform_task] >> load_task >> end_task
+# we can also use like this method
+# start_task.set_downstream(extract_task)
+# or we can use chain() method
